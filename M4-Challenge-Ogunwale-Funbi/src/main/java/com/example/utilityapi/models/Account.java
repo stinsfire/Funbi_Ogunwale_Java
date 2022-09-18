@@ -1,10 +1,11 @@
 package com.example.utilityapi.models;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class Account {
-
     private String username;
 
     @Size(min = 1, max=10, message = "Password cannot exceed 10 characters")

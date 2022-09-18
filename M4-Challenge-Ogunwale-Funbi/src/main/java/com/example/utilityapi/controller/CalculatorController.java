@@ -16,7 +16,7 @@ public class CalculatorController {
     }
 
     @RequestMapping(value = "/calculator/divide", method = RequestMethod.GET)
-//    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
     public double divide(@Valid @RequestParam int value1, @Valid @RequestParam  int value2) {
 
@@ -27,7 +27,7 @@ public class CalculatorController {
     }
 
     @RequestMapping(value = "/calculator/square/{value}", method = RequestMethod.GET)
-//    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
     public int square(@PathVariable @Valid int value) {
         if (((long)value* (long) value)>Integer.MAX_VALUE ){

@@ -35,7 +35,7 @@ public class RecordStoreController {
     }
 
     @RequestMapping(value = "/records/{id}", method = RequestMethod.GET)
-//    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
     public Record getRecordById(@PathVariable @Valid int id) {
 

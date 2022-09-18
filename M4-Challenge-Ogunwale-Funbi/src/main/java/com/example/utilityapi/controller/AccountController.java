@@ -3,6 +3,7 @@ package com.example.utilityapi.controller;
 import com.example.utilityapi.models.Account;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,11 +26,25 @@ public class AccountController {
 
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
+    @ResponseBody
     public Account createAccount(@RequestBody @Valid Account account) {
-
+        for (Account i:accountList){
+            if (i.getUsername().toLowerCase().equals((account.getUsername().toLowerCase()))){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+        }
         account.setId(idCounter++);
         accountList.add(account);
 
+
         return account;
     }
+
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public List<Account> getAllAccounts() {
+
+        return accountList;
+    }
+
 }
